@@ -2,6 +2,7 @@ import CompoundComponentExample from './compound-component-example';
 import {
   ContextComponentExampleOne,
   ContextComponentExampleTwo,
+  ContextComponentExampleThree,
 } from './context-examples';
 import './App.css';
 
@@ -11,6 +12,7 @@ function App() {
       <CompoundComponentExample />
       <ContextComponentExampleOne />
       <ContextComponentExampleTwo />
+      <ContextComponentExampleThree />
     </>
   );
 }

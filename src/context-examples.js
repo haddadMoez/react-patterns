@@ -53,4 +53,60 @@ const ContextComponentExampleTwo = () => {
   );
 };
 
-export { ContextComponentExampleOne, ContextComponentExampleTwo };
+// EXAMPLE THREE
+const ExampleThreeContext = React.createContext({});
+
+const Parent = ({ children }) => {
+  const [clickedIndex, setClickedIndex] = React.useState(-1);
+  const context = React.useMemo(
+    () => ({
+      clickedIndex,
+      onClick: (val) => setClickedIndex(val),
+    }),
+    [clickedIndex]
+  );
+
+  return (
+    <ExampleThreeContext.Provider value={context}>
+      <div>{children}</div>
+    </ExampleThreeContext.Provider>
+  );
+};
+
+const Child = ({ children }) => {
+  const { clickedIndex, onClick } = React.useContext(ExampleThreeContext);
+  const childrenWithProps = React.Children.map(children, (child, index) => {
+    if (React.isValidElement(child))
+      return React.cloneElement(child, {
+        isClicked: index === clickedIndex,
+        onClick: () => onClick(index),
+      });
+  });
+  return <div>{childrenWithProps}</div>;
+};
+
+const Content = ({ onClick, value, isClicked }) => {
+  const color = isClicked ? 'red' : 'black';
+  return (
+    <button style={{ color }} onClick={onClick}>
+      {value}
+    </button>
+  );
+};
+
+const ContextComponentExampleThree = () => {
+  return (
+    <Parent>
+      <Child>
+        <Content value={'east'} />
+        <Content value={'west'} />
+      </Child>
+    </Parent>
+  );
+};
+
+export {
+  ContextComponentExampleOne,
+  ContextComponentExampleTwo,
+  ContextComponentExampleThree,
+};
