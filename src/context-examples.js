@@ -29,4 +29,28 @@ const ContextComponentExampleOne = () => {
     )
 }
 
-export default ContextComponentExampleOne
+// EXAMPLE TWO
+const ExampleTwoContext = React.createContext('default');
+
+const ExampleTwoParent = () => {
+    return (
+        <div>
+            <ExampleTwoChild />
+        </div>
+    )
+}
+
+const ExampleTwoChild = () => {
+    const value = React.useContext(ExampleTwoContext);
+    return <h1>{value}</h1>
+}
+
+const ContextComponentExampleTwo = () => {
+    return (
+        <ExampleTwoContext.Provider value='HelloWorld-2!'>
+            <ExampleTwoParent />
+        </ExampleTwoContext.Provider>
+    )
+}
+
+export { ContextComponentExampleOne, ContextComponentExampleTwo }
