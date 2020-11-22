@@ -1,5 +1,8 @@
 import CompoundComponentExample from './compound-component-example';
-import RenderExampleExampleOne from './render-props-example';
+import {
+  RenderPropsExampleOne,
+  RenderPropsExampleTwo,
+} from './render-props-examples';
 import {
   ContextComponentExampleOne,
   ContextComponentExampleTwo,
@@ -14,7 +17,8 @@ function App() {
       <ContextComponentExampleOne />
       <ContextComponentExampleTwo />
       <ContextComponentExampleThree />
-      <RenderExampleExampleOne />
+      <RenderPropsExampleOne />
+      <RenderPropsExampleTwo />
     </>
   );
 }
