@@ -56,4 +56,31 @@ const RenderPropsExampleTwo = () => {
   );
 };
 
-export { RenderPropsExampleOne, RenderPropsExampleTwo };
+//EXAMPLE THREE
+const Parent = ({ children }) => {
+  return <>{children}</>;
+};
+
+const Child = ({ children }) => {
+  return <>{children}</>;
+};
+
+const Content = ({ value }) => {
+  return <button>{value}</button>;
+};
+
+const RenderPropsExampleThree = () => {
+  return (
+    <Parent>
+      <Child>
+        <Content value={'three'} />
+        <Content value={'four'} />
+      </Child>
+    </Parent>
+  );
+};
+export {
+  RenderPropsExampleOne,
+  RenderPropsExampleTwo,
+  RenderPropsExampleThree,
+};

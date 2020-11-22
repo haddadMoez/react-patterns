@@ -2,6 +2,7 @@ import CompoundComponentExample from './compound-component-example';
 import {
   RenderPropsExampleOne,
   RenderPropsExampleTwo,
+  RenderPropsExampleThree,
 } from './render-props-examples';
 import {
   ContextComponentExampleOne,
@@ -19,6 +20,7 @@ function App() {
       <ContextComponentExampleThree />
       <RenderPropsExampleOne />
       <RenderPropsExampleTwo />
+      <RenderPropsExampleThree />
     </>
   );
 }
