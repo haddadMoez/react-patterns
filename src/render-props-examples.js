@@ -58,27 +58,51 @@ const RenderPropsExampleTwo = () => {
 
 //EXAMPLE THREE
 const Parent = ({ children }) => {
-  return <>{children}</>;
+  const [clickedIndex, setClickedIndex] = React.useState(-1);
+  return (
+    <>
+      {children({
+        clickedIndex,
+        onClick: setClickedIndex,
+      })}
+    </>
+  );
 };
 
 const Child = ({ children }) => {
   return <>{children}</>;
 };
 
-const Content = ({ value }) => {
-  return <button>{value}</button>;
+const Content = ({ value, isClicked, onClick }) => {
+  const color = isClicked ? 'green' : 'black';
+  return (
+    <button style={{ color }} onClick={onClick}>
+      {value}
+    </button>
+  );
 };
 
 const RenderPropsExampleThree = () => {
   return (
     <Parent>
-      <Child>
-        <Content value={'three'} />
-        <Content value={'four'} />
-      </Child>
+      {({ clickedIndex, onClick }) => (
+        <Child>
+          <Content
+            isClicked={clickedIndex === 0}
+            value={'three'}
+            onClick={() => onClick(0)}
+          />
+          <Content
+            isClicked={clickedIndex === 1}
+            value={'four'}
+            onClick={() => onClick(1)}
+          />
+        </Child>
+      )}
     </Parent>
   );
 };
+
 export {
   RenderPropsExampleOne,
   RenderPropsExampleTwo,
