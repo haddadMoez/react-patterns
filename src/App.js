@@ -9,6 +9,7 @@ import {
   ContextComponentExampleTwo,
   ContextComponentExampleThree,
 } from './context-examples';
+import UncontrolledComponentExample from './uncontrolled-component-example';
 import './App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <RenderPropsExampleOne />
       <RenderPropsExampleTwo />
       <RenderPropsExampleThree />
+      <UncontrolledComponentExample />
     </>
   );
 }
